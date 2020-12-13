@@ -1,15 +1,18 @@
+import { Menu } from '@material-ui/core'
 import React, { Component } from 'react'
 import AddProducts from '../components/AddProducts'
-import Home from './Home'
+import Header from '../components/Header'
+
+
 
 export default class Add extends Component {
     render() {
         return (
             <div>
-               <Home/>
-               <AddProducts/>
-               
+                <Header></Header>
+                <AddProducts></AddProducts>
             </div>
+            
         )
     }
 }

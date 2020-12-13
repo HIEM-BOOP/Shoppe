@@ -3,5 +3,5 @@ export interface Product  {
     name ?: string ,
     price ?: number ,
     priceSale ?: number ,
-    images : string[] ,
+    images ?: string ,
 }

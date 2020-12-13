@@ -15,7 +15,7 @@ export default class ProductItem extends Component<Props, {}> {
         return (
 
             <div className="productCard">
-                <img src ={this.props.product.images[0]} alt="" />
+                <img src ={this.props.product.images} alt="" />
                 <div className="nameProduct">
                     <p>{this.props.product.name}</p>
                 </div>

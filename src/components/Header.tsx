@@ -6,7 +6,7 @@ import {
     Route,
     Link
 } from "react-router-dom";
-export default class Menu extends Component {
+export default class Header extends Component {
     render() {
         return (
             <div>
