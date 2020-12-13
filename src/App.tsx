@@ -18,15 +18,16 @@ function App() {
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
         <Switch>
-          <Route path="/">
-            < Home/>
-          </Route>
           <Route path="/home-shoppe">
-           
+            < Home />
+          </Route>
+          <Route path="/add-products">
+
+            <Add />
           </Route>
 
-          <Route exact path="/add-products">
-              <Add/>
+          <Route  path="/">
+            <Home/>
           </Route>
         </Switch>
       </div>
