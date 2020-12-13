@@ -10,7 +10,11 @@ export class ProductService {
   }
   addProduct = (product: Product) => {
     //TODO: them san pham xuong local
-    
+    let jsonProducts = localStorage.getItem('danhSachSanPham');
+        let products = JSON.parse(jsonProducts || '[]');
+        products.push(product);
+        localStorage.setItem('danhSachSanPham', JSON.stringify(products));
+
   }
 
   

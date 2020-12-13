@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Product } from '../model/Product';
+import { productService } from '../service/ProductService';
 
 export default class PopUpAddProduct extends Component<Props, State> {
     constructor(props: any) {
@@ -95,10 +96,7 @@ export default class PopUpAddProduct extends Component<Props, State> {
     }
     addProduct = () => {
         console.log(this.state.product)
-        let jsonProducts = localStorage.getItem('danhSachSanPham');
-        let products = JSON.parse(jsonProducts || '[]');
-        products.push(this.state.product);
-        localStorage.setItem('danhSachSanPham', JSON.stringify(products));
+        productService.addProduct(this.state.product)
     }
 
 }
