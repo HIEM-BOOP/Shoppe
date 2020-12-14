@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { Product } from '../model/Product'
+import { productService } from '../service/ProductService';
 import PopUpAddProduct from './PopUpAddProduct';
 import ProductAdded from './ProductAdded'
 
@@ -7,8 +9,8 @@ export default class AddProducts extends Component<{}, State> {
     constructor(props: any) {
         super(props);
         this.state = {
-            isOpenPopup: false
-        
+            isOpenPopup: false,
+            products: productService.list() ,
         }
     }
     render() {
@@ -34,7 +36,11 @@ export default class AddProducts extends Component<{}, State> {
                     <div className="products">
                         <div className="container">
                             <div className="content" id="products">
-                                <ProductAdded />
+                                {
+                                    this.state.products.map(item => 
+                                        <ProductAdded product={item}/>
+                                        )
+                                }
                             </div>
                         </div>
                     </div>
@@ -50,6 +56,7 @@ export default class AddProducts extends Component<{}, State> {
     closePopup = () => {
         this.setState({
             isOpenPopup : false ,
+            
         })
          
      }
@@ -57,4 +64,5 @@ export default class AddProducts extends Component<{}, State> {
 }
 interface State {
     isOpenPopup: boolean,
+    products : Product[]
 }  

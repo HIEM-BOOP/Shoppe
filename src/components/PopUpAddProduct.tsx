@@ -98,6 +98,7 @@ export default class PopUpAddProduct extends Component<Props, State> {
         console.log(this.state.product)
         productService.addProduct(this.state.product)
     }
+    
 
 }
 interface Props {
