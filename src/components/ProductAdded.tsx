@@ -1,9 +1,13 @@
+import { keys } from '@material-ui/core/styles/createBreakpoints';
 import React, { Component } from 'react'
 import { AiFillDelete } from "react-icons/ai";
 import { Product } from '../model/Product';
 import { productService } from '../service/ProductService';
 
-export default class ProductAdded extends Component<Props, {}> {
+export default class ProductAdded extends Component<Props,{}> {
+
+
+
 
     render() {
 
@@ -13,7 +17,7 @@ export default class ProductAdded extends Component<Props, {}> {
                 <div className="productCard">
                     <div className="setting">
                         <span className="material-icons" onClick={(event) => {
-                            this.deleteProduct()
+                            this.props.itemDelete(this.props.product.id)
                         }}><AiFillDelete style={{ fontSize: 30 }} /></span>
                     </div>
                     <img
@@ -40,11 +44,10 @@ export default class ProductAdded extends Component<Props, {}> {
 
         )
     }
-    deleteProduct = () => {
-        console.log("Xóa được rồi");
-        
-    }
+   
 }
 export interface Props {
     product: Product;
+    itemDelete(event : number) : void;
 }
+

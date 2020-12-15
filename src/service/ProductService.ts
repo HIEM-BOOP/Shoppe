@@ -14,13 +14,18 @@ export class ProductService {
     products.push(product);
     localStorage.setItem("danhSachSanPham", JSON.stringify(products));
   };
-  deleteProduct = (id: number) => {
-    let jsonProduct = localStorage.getItem("danhSachSanPham");
-    let product = JSON.parse(jsonProduct || "[]");
-    console.log(id);
+  deleteProduct = (id : number , listProduct:Product[] )  => {
+    console.log(id)
+    let newArray = new  Array
+    listProduct.map((item) =>{
+        item.id != id ? newArray.push(item) : console.log()
+    })
+    console.log(newArray)
+    let local = localStorage.setItem("danhSachSanPham" , JSON.stringify(newArray))
+    return newArray
 
-    
-    
+
+
   };
 }
 

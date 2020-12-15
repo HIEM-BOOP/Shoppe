@@ -13,6 +13,19 @@ export default class AddProducts extends Component<{}, State> {
             products: productService.list() ,
         }
     }
+    deleteProduct = (id : number) => {
+        console.log(id)
+        let newArray = new  Array
+        this.state.products.map((item) =>{
+            item.id !== id ? newArray.push(item) : console.log()
+        })
+        console.log(newArray)
+        this.setState({products : newArray})
+        let local = localStorage.setItem("danhSachSanPham" , JSON.stringify(newArray))
+
+
+        
+    }
     render() {
         return (
 
@@ -37,8 +50,14 @@ export default class AddProducts extends Component<{}, State> {
                         <div className="container">
                             <div className="content" id="products">
                                 {
-                                    this.state.products.map(item => 
-                                        <ProductAdded product={item}/>
+                                    this.state.products.map(item=> 
+                                        <ProductAdded product={item} key={item.id} 
+                                        itemDelete={(id) =>{
+                                           
+                                            productService.deleteProduct(id , this.state.products )
+                                            this.setState({products : productService.deleteProduct(id , this.state.products )})
+                                        }}
+                                        />
                                         )
                                 }
                             </div>
