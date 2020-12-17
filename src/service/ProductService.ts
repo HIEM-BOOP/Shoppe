@@ -1,7 +1,7 @@
 import { Product } from "../model/Product";
 
 export class ProductService {
-  list(): Product[] {
+  list(): Product[] {   
     let jsonProduct = localStorage.getItem("danhSachSanPham");
     let product = JSON.parse(jsonProduct || "[]");
 
@@ -17,7 +17,7 @@ export class ProductService {
   deleteProduct = (id : number , listProduct:Product[] )  => {
     console.log(id)
     let newArray = new  Array
-    listProduct.map((item) =>{
+    listProduct.map(item =>{
         item.id !== id ? newArray.push(item) : console.log()
     })
     console.log(newArray)

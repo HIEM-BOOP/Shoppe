@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Cart } from '../model/Cart';
+import { CartProduct } from '../model/CartProduct';
 import { Product } from '../model/Product'
 
 export default class ProductItem extends Component<Props, State> {
@@ -53,8 +53,8 @@ export default class ProductItem extends Component<Props, State> {
                 </div>
                 <div className="price">
                     <p>
-                        <span className="afterSale">{this.props.product.price}</span>
-                        <span className="beforSale">{this.props.product.priceSale}</span>
+                        <span className="afterSale">{this.props.product.priceSale}</span>
+                        <span className="beforSale">{this.props.product.price}</span>
 
                     </p>
                 </div>
@@ -62,7 +62,7 @@ export default class ProductItem extends Component<Props, State> {
                     <button className="btn btn-primary"
                     onClick = {(event) => {
                         console.log("hAHA");
-                        // const cartnew = [] 
+                        /* const cartnew = []  */
                         let arrayNew = {
                             id : this.state.cartItem.id ,
                             quantityProduct : this.state.cartItem.quantityProduct
@@ -83,10 +83,10 @@ export default class ProductItem extends Component<Props, State> {
                         let isExit = false ;
 
                         products.forEach((item: any) => {
-                            if (item.idProduct === this.props.product.id) {
-                                arrayNew.quantityProduct = item.quantityProduct++
-                                localStorage.setItem("Cart", JSON.stringify(products));
-                                alert('Chúc mừng ban tăng thành công');
+                            if (item.idProduct === this.state.cartItem.id) {
+                                arrayNew.quantityProduct = item.quantityProduct ++ 
+                                localStorage.setItem("cart", JSON.stringify(products));
+                                alert('Chúc mừng bạn đã tăng thành công');
                                 isExit = true;
                               
                             }
@@ -114,5 +114,5 @@ export interface Props {
 
 export interface State {
     objItem: Product
-    cartItem: Cart
+    cartItem: CartProduct
 }

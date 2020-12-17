@@ -45,7 +45,7 @@ export default class Header extends Component {
                             </ul>
                             <ul className="menu-right-lv1">
                                 <li className="menu">
-                                    <Link to="Cart-products" className="fas" >< AiOutlineDropbox style={{ fontSize: 25 }} /></Link>
+                                    <Link to="cart-products" className="fas" >< AiOutlineDropbox style={{ fontSize: 25 }} /></Link>
 
                                 </li>
                                 <li className="menu">

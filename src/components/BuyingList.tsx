@@ -1,8 +1,18 @@
 import React, { Component } from 'react';
-import CartProduct from './CartProduct';
+import { CartProduct } from '../model/CartProduct';
+import { CartService, cartService } from '../service/CartService';
+import CartItem from './CartItem';
+
 import TotalAmounts from './TotalAmounts';
 
-class BuyingList extends Component {
+class BuyingList extends Component<Props, State> {
+    constructor(props: any) {
+        super(props);
+        this.state = {
+            
+            cartProduct : cartService.list(),
+        }
+    }
     render() {
         return (
             <div>
@@ -19,12 +29,17 @@ class BuyingList extends Component {
                                 <div className="item-headList"><span>Thao tác</span></div>
                             </div>
                             <div className="productInfor" id="carts" />
-                            <CartProduct/>
-                            <CartProduct/>
-                            <CartProduct/>
+                            {
+                                this.props.listCart.map((item) => {
+                                    return <CartItem {...item} itemDelete={(id) => {
+                                        cartService.deleteCart(id, this.state.cartProduct)
+                                        this.setState({cartProduct : cartService.deleteCart(id , this.state.cartProduct)})
+                                    }} />
+                                })
+                            }
 
                         </div>
-                            <TotalAmounts/>
+                        <TotalAmounts />
                     </div>
                 </div>
                 {/* THÔNG TIN KHÁCH HÀNG  */}
@@ -35,6 +50,15 @@ class BuyingList extends Component {
             </div>
         );
     }
+}
+
+export interface Props {
+    listCart: any[]
+
+
+}
+export interface State {
+    cartProduct: CartProduct[]
 }
 
 export default BuyingList;

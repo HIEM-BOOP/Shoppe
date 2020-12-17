@@ -13,7 +13,7 @@ export default class AddProducts extends Component<{}, State> {
             products: productService.list() ,
         }
     }
-    deleteProduct = (id : number) => {
+  /*   deleteProduct = (id : number) => {
         console.log(id)
         let newArray = new  Array
         this.state.products.map((item) =>{
@@ -25,7 +25,7 @@ export default class AddProducts extends Component<{}, State> {
 
 
         
-    }
+    } */
     render() {
         return (
 
@@ -57,6 +57,8 @@ export default class AddProducts extends Component<{}, State> {
                                             productService.deleteProduct(id , this.state.products )
                                             this.setState({products : productService.deleteProduct(id , this.state.products )})
                                         }}
+                                            
+
                                         />
                                         )
                                 }

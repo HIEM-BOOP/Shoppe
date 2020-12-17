@@ -1,5 +1,4 @@
-import React from 'react';
-import logo from './logo.svg';
+
 import './App.css';
 import {
   BrowserRouter as Router,
@@ -23,10 +22,9 @@ function App() {
             < Home />
           </Route>
           <Route path="/add-products">
-
             <Add />
           </Route>
-          <Route path="/Cart-products">
+          <Route path="/cart-products">
             <Cart/>
           </Route>
 
