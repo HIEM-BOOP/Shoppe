@@ -25,9 +25,7 @@ export default class CartItem extends Component<Props, State> {
             }
         })
     }
-    tongGia = () => {
-        console.log((this.state.quantityProduct) * (this.state.priceSale));
-    }
+  
     render() {
 
         return (
@@ -35,7 +33,7 @@ export default class CartItem extends Component<Props, State> {
                 <div className="cart">
                     <div className="detailInfor">
                         <div className="img-item">
-                            <img src={this.state.images} className="img" />
+                                <img src={this.state.images} className="img" />
                         </div>
                     </div>
                     <div className="detailInfor"><span>{this.state.name} </span></div>
@@ -53,7 +51,7 @@ export default class CartItem extends Component<Props, State> {
                         />
                     </div>
                     <div className="detailInfor">
-                        <span>{(this.state.quantityProduct) * (this.state.priceSale)}đ</span>
+                        <span>{(this.state.quantityProduct || 1) * (this.state.priceSale || 0   )}đ</span>
 
 
                     </div>

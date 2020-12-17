@@ -10,7 +10,9 @@ class BuyingList extends Component<Props, State> {
         super(props);
         this.state = {
             
-            cartProduct : cartService.list(),
+            cartProduct : cartService.list() , 
+
+            
         }
     }
     render() {

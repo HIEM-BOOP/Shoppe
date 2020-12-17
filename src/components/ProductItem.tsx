@@ -4,7 +4,7 @@ import { Product } from '../model/Product'
 
 export default class ProductItem extends Component<Props, State> {
     constructor(props: any) {
-        super(props);
+        super(props );
 
         this.state = {
             cartItem: {
@@ -20,7 +20,7 @@ export default class ProductItem extends Component<Props, State> {
             }
 
         }
-        let json = localStorage.getItem('Cart');
+        let json = localStorage.getItem('cart');
         let products = JSON.parse(json || '[]');
         console.log(products);
         products.map((item: any) => {

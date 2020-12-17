@@ -2,7 +2,7 @@ import { CartProduct } from "../model/CartProduct";
 import { Product } from "../model/Product";
 
 export class CartService {
-    list(): Product[] {
+    list(): CartProduct[] {
         let jsonProduct = localStorage.getItem("cart");
         let product = JSON.parse(jsonProduct || "[]");
     
