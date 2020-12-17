@@ -18,7 +18,7 @@ export class ProductService {
     console.log(id)
     let newArray = new  Array
     listProduct.map((item) =>{
-        item.id != id ? newArray.push(item) : console.log()
+        item.id !== id ? newArray.push(item) : console.log()
     })
     console.log(newArray)
     let local = localStorage.setItem("danhSachSanPham" , JSON.stringify(newArray))

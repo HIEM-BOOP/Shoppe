@@ -9,6 +9,7 @@ import {
 } from "react-router-dom";
 import Home from './pages/Home';
 import Add from './pages/Add';
+import Cart from './pages/Cart';
 
 
 function App() {
@@ -25,9 +26,12 @@ function App() {
 
             <Add />
           </Route>
+          <Route path="/Cart-products">
+            <Cart/>
+          </Route>
 
-          <Route  path="/">
-            <Home/>
+          <Route path="/">
+            <Home />
           </Route>
         </Switch>
       </div>
