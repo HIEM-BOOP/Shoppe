@@ -75,9 +75,9 @@ export default class ProductItem extends Component<Props, State> {
                                 if (item.id === this.props.product.id) {
                                     item.quantityProduct = item.quantityProduct++;
                                 }
-                                console.log(item.quantityProduct + "+++");
-
+                                
                             })
+                            console.log(this.state.cartItem.id+ "+++");
 
                             let kiemTra = false;
                             let isExit = false;

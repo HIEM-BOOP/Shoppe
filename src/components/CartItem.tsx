@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 
 import { AiFillDelete } from "react-icons/ai";
-import { CartProduct } from '../model/CartProduct';
-import { cartService } from '../service/CartService';
+
 
 export default class CartItem extends Component<Props, State> {
 
