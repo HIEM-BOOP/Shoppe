@@ -22,7 +22,7 @@ export class ProductService {
     })
     console.log(newArray)
     let local = localStorage.setItem("danhSachSanPham" , JSON.stringify(newArray))
-    return newArray
+    return newArray 
 
 
 

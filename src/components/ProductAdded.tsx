@@ -5,19 +5,8 @@ import { Product } from '../model/Product';
 import PopUpUpDate from '../components/PopUpUpdate'
 import { productService } from '../service/ProductService';
 
-export default class ProductAdded extends Component<Props,State> {
+export default class ProductAdded extends Component<Props,{}> {
 
-    constructor(props:any){
-        super(props);
-        this.state = {
-            isOpenPupUp : false ,
-        }
-    }
-    isOpenUpdate = () => {
-        this.setState({
-            isOpenPupUp : true
-        })
-    }
 
     render() {
 
@@ -45,11 +34,13 @@ export default class ProductAdded extends Component<Props,State> {
                     </div>
                     <div className="button">
                         <button className="btn btn-primary"
-                        
+                        onClick = {() => {this.props.isUpdate(this.props.product.id)
+                        console.log(this.props.product.id);
+                        this.props.setProduct(this.props.product)
+                        }}
                         >Chỉnh sửa</button>
                     </div>
 
-                       {this.state.isOpenPupUp && <PopUpUpDate   />}
                 </div>
             </div>
 
@@ -57,12 +48,11 @@ export default class ProductAdded extends Component<Props,State> {
     }
    
 }
-export interface State {
-    isOpenPupUp : boolean ,
-}
+
 export interface Props {
-    
+    isUpdate(id : number) : void ,
     product: Product;
     itemDelete(event : number) : void;
+    setProduct(item : Product):void
 }
 

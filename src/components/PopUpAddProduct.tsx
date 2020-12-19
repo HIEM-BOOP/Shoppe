@@ -103,6 +103,7 @@ export default class PopUpAddProduct extends Component<Props, State> {
 }
 interface Props {
     turnOffPopUpAdd(): void
+    
 }
 
 interface State {
