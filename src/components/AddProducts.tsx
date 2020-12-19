@@ -54,7 +54,8 @@ export default class AddProducts extends Component<{}, State> {
                             <div className="content" id="products">
                                 {
                                     this.state.products.map(item=> 
-                                        <ProductAdded isUpdate = {() => {
+                                        <ProductAdded 
+                                         isUpdate = {() => {
                                             this.setState({
                                                 isOpenPopupDate : true
                                             })
@@ -65,6 +66,9 @@ export default class AddProducts extends Component<{}, State> {
                                             this.setState({products : productService.deleteProduct(id , this.state.products )})
                                         }}
                                             setProduct={(event : Product)=>{
+                                                console.log(event);
+                                                
+                                                // productService.updateProduct(this.state.product.id , this.state.products)
                                                 this.setState({product:event})
                                             }}
 
@@ -77,6 +81,8 @@ export default class AddProducts extends Component<{}, State> {
                 </div>
                 {this.state.isOpenPopup && <PopUpAddProduct turnOffPopUpAdd = {this.closePopup}  />}
                 {this.state.isOpenPopupDate && <PopUpUpdate product={this.state.product } setProduct={ (product : Product) =>{
+                    console.log(product)
+                    console.log("====")
                     product =this.state.product
                     
                 } }  isOpenPopUpDate = {this.closePopupUpdate}  />}

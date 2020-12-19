@@ -24,9 +24,19 @@ export class ProductService {
     let local = localStorage.setItem("danhSachSanPham" , JSON.stringify(newArray))
     return newArray 
 
-
-
   };
+  updateProduct = (id : number ,listProduct:Product[] ) => {
+    let newArray = new Array
+    let localPhone = localStorage.getItem('Shopee');
+    let localShoppe = JSON.parse(localPhone || '[]');
+    localShoppe.map((item: any) => {
+        item.idProduct === id ? newArray.push() : newArray.push(item)
+    })
+    localStorage.setItem("danhSachSanPham", JSON.stringify(newArray));
+  
+
+    
+  }
 }
 
 export const productService = new ProductService();

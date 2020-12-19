@@ -5,7 +5,7 @@ import { Product } from '../model/Product';
 import PopUpUpDate from '../components/PopUpUpdate'
 import { productService } from '../service/ProductService';
 
-export default class ProductAdded extends Component<Props,{}> {
+export default class ProductAdded extends Component<Props, {}> {
 
 
     render() {
@@ -34,10 +34,14 @@ export default class ProductAdded extends Component<Props,{}> {
                     </div>
                     <div className="button">
                         <button className="btn btn-primary"
-                        onClick = {() => {this.props.isUpdate(this.props.product.id)
-                        console.log(this.props.product.id);
-                        this.props.setProduct(this.props.product)
-                        }}
+                            onClick={() => {
+                                this.props.isUpdate(this.props.product.id)
+                                console.log(this.props.product);
+                                
+                                this.props.setProduct(this.props.product)
+                                console.log(this.props.product)
+                            }}
+                            
                         >Chỉnh sửa</button>
                     </div>
 
@@ -46,13 +50,14 @@ export default class ProductAdded extends Component<Props,{}> {
 
         )
     }
-   
+
 }
 
 export interface Props {
-    isUpdate(id : number) : void ,
+    isUpdate(id: number): void,
     product: Product;
-    itemDelete(event : number) : void;
-    setProduct(item : Product):void
+    
+    itemDelete(event: number): void;
+    setProduct(item: Product): void
 }
 

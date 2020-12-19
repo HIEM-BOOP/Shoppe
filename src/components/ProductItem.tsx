@@ -4,7 +4,7 @@ import { Product } from '../model/Product'
 
 export default class ProductItem extends Component<Props, State> {
     constructor(props: any) {
-        super(props );
+        super(props);
 
         this.state = {
             cartItem: {
@@ -28,7 +28,7 @@ export default class ProductItem extends Component<Props, State> {
                 this.state = {
                     cartItem: {
                         id: this.props.product.id,
-                        quantityProduct : this.state.cartItem.quantityProduct
+                        quantityProduct: this.state.cartItem.quantityProduct
                     },
                     objItem: {
                         id: this.props.product.id,
@@ -36,7 +36,7 @@ export default class ProductItem extends Component<Props, State> {
                         price: this.props.product.price,
                         images: this.props.product.images,
                         name: this.props.product.name,
-                        
+
                     }
                 }
             }
@@ -60,47 +60,47 @@ export default class ProductItem extends Component<Props, State> {
                 </div>
                 <div className="button">
                     <button className="btn btn-primary"
-                    onClick = {(event) => {
-                        console.log("hAHA");
-                        /* const cartnew = []  */
-                        let arrayNew = {
-                            id : this.state.cartItem.id ,
-                            quantityProduct : this.state.cartItem.quantityProduct
-                        }
-
-                        let jsonProduct = localStorage.getItem("cart");
-                        let products= JSON.parse(jsonProduct || "[]");
-
-                        products.map((item : any) => {
-                            if(item.id === this.props.product.id){
-                                item.quantityProduct = item.quantityProduct ++ ;
+                        onClick={(event) => {
+                            console.log("hAHA");
+                            /* const cartnew = []  */
+                            let arrayNew = {
+                                id: this.state.cartItem.id,
+                                quantityProduct: this.state.cartItem.quantityProduct
                             }
-                            console.log(item.quantityProduct + "+++");
-                            
-                        })
 
-                        let kiemTra = false ;
-                        let isExit = false ;
+                            let jsonProduct = localStorage.getItem("cart");
+                            let products = JSON.parse(jsonProduct || "[]");
 
-                        products.forEach((item: any) => {
-                            if (item.idProduct === this.state.cartItem.id) {
-                                arrayNew.quantityProduct = item.quantityProduct ++ 
-                                localStorage.setItem("cart", JSON.stringify(products));
-                                alert('Chúc mừng bạn đã tăng thành công');
-                                isExit = true;
-                              
-                            }
-                            if(item.idProduct !== this.props.product.id){  kiemTra = true }
-    
-                        })
-                            if(!isExit){
+                            products.map((item: any) => {
+                                if (item.id === this.props.product.id) {
+                                    item.quantityProduct = item.quantityProduct++;
+                                }
+                                console.log(item.quantityProduct + "+++");
+
+                            })
+
+                            let kiemTra = false;
+                            let isExit = false;
+
+                            products.forEach((item: any) => {
+                                if (item.idProduct === this.state.cartItem.id) {
+                                    arrayNew.quantityProduct = item.quantityProduct++
+                                    localStorage.setItem("cart", JSON.stringify(products));
+                                    alert('Chúc mừng bạn đã tăng thành công');
+                                    isExit = true;
+
+                                }
+                                if (item.idProduct !== this.props.product.id) { kiemTra = true }
+
+                            })
+                            if (!isExit) {
                                 let objShopee = arrayNew
                                 products.push(objShopee)
                                 localStorage.setItem("cart", JSON.stringify(products));
                                 alert('Chúc mừng bạn đã thêm thành công')
                             }
 
-                    }}
+                        }}
                     >Đưa vào giỏ</button>
                 </div>
             </div>
