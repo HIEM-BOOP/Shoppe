@@ -1,6 +1,6 @@
 import { Menu } from '@material-ui/core'
 import React, { Component } from 'react'
-import AddProducts from '../components/AddProducts'
+import AddProducts from '../components/add/AddProducts'
 import Header from '../components/Header'
 
 

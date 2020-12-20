@@ -1,22 +1,14 @@
-import { keys } from '@material-ui/core/styles/createBreakpoints';
 import React, { Component } from 'react'
 import { AiFillDelete } from "react-icons/ai";
-import { Product } from '../model/Product';
-import PopUpUpDate from '../components/PopUpUpdate'
-import { productService } from '../service/ProductService';
-
+import { Product } from '../../model/Product';
 export default class ProductAdded extends Component<Props, {}> {
-
-
     render() {
-
         return (
             <div>
-
                 <div className="productCard">
                     <div className="setting">
-                        <span className="material-icons" onClick={(event) => {
-                            this.props.itemDelete(this.props.product.id)
+                        <span className="material-icons" onClick={() => {
+                            this.props.onDelete(this.props.product.id)
                         }}><AiFillDelete style={{ fontSize: 30 }} /></span>
                     </div>
                     <img
@@ -35,10 +27,10 @@ export default class ProductAdded extends Component<Props, {}> {
                     <div className="button">
                         <button className="btn btn-primary"
                             onClick={() => {
-                                this.props.isUpdate(this.props.product.id)
+                                this.props.onUpdate(this.props.product.id)
                                 console.log(this.props.product);
                                 
-                                this.props.setProduct(this.props.product)
+                                this.props.onSetProduct(this.props.product)
                                 console.log(this.props.product)
                             }}
                             
@@ -47,17 +39,14 @@ export default class ProductAdded extends Component<Props, {}> {
 
                 </div>
             </div>
-
         )
     }
-
 }
 
 export interface Props {
-    isUpdate(id: number): void,
     product: Product;
-    
-    itemDelete(event: number): void;
-    setProduct(item: Product): void
+    onUpdate(id: number): void,
+    onDelete(id: number): void;
+    onSetProduct(item: Product): void
 }
 

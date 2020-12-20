@@ -7,6 +7,20 @@ export class ProductService {
 
     return product;
   }
+  getById = (id : number) => {
+      const products = this.list();
+
+      const product = products.find((item) =>{
+        if(item.id === id)
+        return true;
+        else return false;
+      })
+      return product;
+  }
+
+  save = (product : Product[]) => { 
+      let jsonProduct = localStorage.setItem('danhSachSanPham',JSON.stringify(product));
+  } ;
   addProduct = (product: Product) => {
     //TODO: them san pham xuong local
     let jsonProducts = localStorage.getItem("danhSachSanPham");
@@ -27,7 +41,7 @@ export class ProductService {
   };
   updateProduct = (id : number ,listProduct:Product[] ) => {
     let newArray = new Array
-    let localPhone = localStorage.getItem('Shopee');
+    let localPhone = localStorage.getItem('danhSachSanPham');
     let localShoppe = JSON.parse(localPhone || '[]');
     localShoppe.map((item: any) => {
         item.idProduct === id ? newArray.push() : newArray.push(item)

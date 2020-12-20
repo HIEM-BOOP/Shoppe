@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { CartProduct } from '../model/CartProduct';
-import { CartService, cartService } from '../service/CartService';
+import { CartProduct } from '../../model/CartProduct';
+import { CartService, cartService } from '../../service/CartService';
 import CartItem from './CartItem';
 
 import TotalAmounts from './TotalAmounts';
@@ -34,8 +34,8 @@ class BuyingList extends Component<Props, State> {
                             {
                                 this.props.listCart.map((item) => {
                                     return <CartItem {...item} itemDelete={(id) => {
-                                        cartService.deleteCart(id, this.state.cartProduct)
-                                        this.setState({cartProduct : cartService.deleteCart(id , this.state.cartProduct)})
+                                        cartService.delete(id, this.state.cartProduct)
+                                        this.setState({cartProduct : cartService.delete(id , this.state.cartProduct)})
                                     }} />
                                 })
                             }

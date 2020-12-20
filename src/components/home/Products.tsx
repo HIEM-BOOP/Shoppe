@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { Product } from '../model/Product'
-import { productService, ProductService } from '../service/ProductService';
+import { Product } from '../../model/Product'
+import { productService, ProductService } from '../../service/ProductService';
 import ProductItem from './ProductItem'
 
 export default class Products extends Component<{},State> {

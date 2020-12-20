@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { Product } from '../model/Product';
-import { productService } from '../service/ProductService';
+import { Product } from '../../model/Product';
+import { productService } from '../../service/ProductService';
 
 export default class PopUpAddProduct extends Component<Props, State> {
     constructor(props: any) {

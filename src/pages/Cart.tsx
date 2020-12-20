@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import BuyerInformation from '../components/BuyerInformation'
-import BuyingList from '../components/BuyingList'
+import BuyerInformation from '../components/cart/BuyerInformation'
+import BuyingList from '../components/cart/BuyingList'
 import Header from '../components/Header'
 import { CartProduct } from '../model/CartProduct';
 
