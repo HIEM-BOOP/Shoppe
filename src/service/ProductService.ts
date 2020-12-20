@@ -23,10 +23,9 @@ export class ProductService {
   } ;
   addProduct = (product: Product) => {
     //TODO: them san pham xuong local
-    let jsonProducts = localStorage.getItem("danhSachSanPham");
-    let products = JSON.parse(jsonProducts || "[]");
+    const products = this.list();
     products.push(product);
-    localStorage.setItem("danhSachSanPham", JSON.stringify(products));
+    this.save(products)
   };
   deleteProduct = (id : number , listProduct:Product[] )  => {
     console.log(id)
@@ -35,19 +34,17 @@ export class ProductService {
         item.id !== id ? newArray.push(item) : console.log()
     })
     console.log(newArray)
-    let local = localStorage.setItem("danhSachSanPham" , JSON.stringify(newArray))
+    this.save(newArray)
     return newArray 
 
   };
   updateProduct = (id : number ,listProduct:Product[] ) => {
     let newArray = new Array
-    let localPhone = localStorage.getItem('danhSachSanPham');
-    let localShoppe = JSON.parse(localPhone || '[]');
-    localShoppe.map((item: any) => {
+    const product = this.list()
+    product.map((item: any) => {
         item.idProduct === id ? newArray.push() : newArray.push(item)
     })
-    localStorage.setItem("danhSachSanPham", JSON.stringify(newArray));
-  
+    this.save(product)
 
     
   }

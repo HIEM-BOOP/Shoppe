@@ -1,22 +1,17 @@
 import React, { Component } from 'react'
-
 import { AiFillDelete } from "react-icons/ai";
 import { Product } from '../../model/Product';
-import { cartService, CartService } from '../../service/CartService';
 import { productService } from '../../service/ProductService';
 
 
 export default class CartItem extends Component<Props, State> {
-
-
     constructor(props: any) {
         super(props);
         this.state = {
-            quantityProduct : this.props.quantityProduct,
-            product :  productService.getById(this.props.id) as Product
-        }   
+            quantityProduct: this.props.quantityProduct,
+            product: productService.getById(this.props.id) as Product
+        }
     }
-  
     render() {
 
         return (
@@ -24,7 +19,7 @@ export default class CartItem extends Component<Props, State> {
                 <div className="cart">
                     <div className="detailInfor">
                         <div className="img-item">
-                                <img src={this.state.product.images} className="img" />
+                            <img src={this.state.product.images} className="img" />
                         </div>
                     </div>
                     <div className="detailInfor"><span>{this.state.product.name} </span></div>
@@ -42,12 +37,10 @@ export default class CartItem extends Component<Props, State> {
                         />
                     </div>
                     <div className="detailInfor">
-                        <span>{(this.state.quantityProduct || 1) * (this.state.product.priceSale || 0   )}đ</span>
-
-
+                        <span>{(this.state.quantityProduct || 1) * (this.state.product.priceSale || 0)}đ</span>
                     </div>
                     <div className="detailInfor">
-                        <AiFillDelete onClick = {(event) => this.props.itemDelete(this.props.id)} style={{ fontSize: 30, color: 'red' }} />
+                        <AiFillDelete onClick={(event) => this.props.itemDelete(this.props.id)} style={{ fontSize: 30, color: 'red' }} />
 
                     </div>
                 </div>
@@ -60,7 +53,7 @@ export default class CartItem extends Component<Props, State> {
 interface Props {
     id: number,
     quantityProduct: number,
-    itemDelete(event : number) : void ,
+    itemDelete(event: number): void,
 }
 interface State {
     product: Product
