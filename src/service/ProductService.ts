@@ -45,8 +45,6 @@ export class ProductService {
         item.idProduct === id ? newArray.push() : newArray.push(item)
     })
     this.save(product)
-
-    
   }
 }
 
