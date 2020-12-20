@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Product } from '../../model/Product';
+import { productService } from '../../service/ProductService';
 
 
 export default class PopUpUpdate extends Component<Props, State> {
@@ -56,17 +57,7 @@ export default class PopUpUpdate extends Component<Props, State> {
                     <div className="button-item">
                         <button className="btn btn-primary"
                             onClick={() => {
-                                this.props.setProduct(this.props.product)
-                                console.log((this.props.product));
-                                let newArray = new Array
-                                let localPhone = localStorage.getItem('danhSachSanPham');
-                                let localShoppe = JSON.parse(localPhone || '[]');
-                                localShoppe.map((item: any) => {
-                                    item.id === this.props.product.id ? newArray.push(this.state) : newArray.push(item)
-                                })
-                                localStorage.setItem("danhSachSanPham", JSON.stringify(newArray));
-                                console.log(this.state.id);
-                                console.log(this.state);
+                                productService.updateProduct(this.props.product.id,this.state);
                                 alert("Bạn đã sữa thành công")
                             }}
                         >Lưu</button>

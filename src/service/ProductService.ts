@@ -38,13 +38,15 @@ export class ProductService {
     return newArray 
 
   };
-  updateProduct = (id : number ,listProduct:Product[] ) => {
-    let newArray = new Array
-    const product = this.list()
-    product.map((item: any) => {
-        item.idProduct === id ? newArray.push() : newArray.push(item)
+  updateProduct = (id : number ,product:Product ) => {
+    const listProduct = this.list();
+    let newArray = new Array() ;
+    listProduct.map((item: any) => {
+        item.id === product.id ? newArray.push(product) : newArray.push(item)
     })
-    this.save(product)
+    console.log(newArray);
+    
+    this.save(newArray)
   }
 }
 
