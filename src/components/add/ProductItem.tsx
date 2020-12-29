@@ -12,6 +12,8 @@ export default class ProductAdded extends Component<Props, {}> {
                         }}><AiFillDelete style={{ fontSize: 30 }} /></span>
                     </div>
                     <img
+                        className = 'image'
+                        width="400" height="400"
                         src={this.props.product.images}
                         alt=""
                     />
@@ -29,11 +31,11 @@ export default class ProductAdded extends Component<Props, {}> {
                             onClick={() => {
                                 this.props.onUpdate(this.props.product.id)
                                 console.log(this.props.product);
-                                
+
                                 this.props.onSetProduct(this.props.product)
                                 console.log(this.props.product)
                             }}
-                            
+
                         >Chỉnh sửa</button>
                     </div>
 

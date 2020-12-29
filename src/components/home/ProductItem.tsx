@@ -22,6 +22,7 @@ export default class ProductItem extends Component<Props, State> {
                     <button className="btn btn-primary"
                         onClick={(event) => {
                             cartService.addToCart(this.props.product.id)
+                            
                         }}
                     >Đưa vào giỏ</button>
                 </div>

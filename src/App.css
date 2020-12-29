@@ -270,6 +270,11 @@ footer {
 .productCard img {
   width: 100%;
   margin-bottom: 10px;
+  display: block;
+  max-width: 195px;
+  max-height : 180px;
+  width: auto;
+  height: auto;
 }
 .productCard .price {
   margin-bottom: 20px;
@@ -465,8 +470,8 @@ footer {
   display: inline-block;
   margin-top: 30px;
 }
-.buyingList i:hover {
-  color: var(--primary-color);
+.delete :hover {
+  color: #282c34;
 }
 /* THÔNG TIN NGƯỜI MUA */
 .buyerInformation {

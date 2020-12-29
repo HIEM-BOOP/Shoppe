@@ -45,11 +45,11 @@ export default class Header extends Component {
                             </ul>
                             <ul className="menu-right-lv1">
                                 <li className="menu">
-                                    <Link to="/cart-products" className="fas" >< AiOutlineDropbox style={{ fontSize: 25 }} /></Link>
+                                    <Link to="/cart-products" className="fas fa-cart-arrow-down menu-level-1" ></Link>
 
                                 </li>
                                 <li className="menu">
-                                    <Link to="/add-products" className="fas fa-box-open" ><AiOutlineShoppingCart style={{ fontSize: 25 }} />Kho Hàng</Link>
+                                    <Link to="/add-products" className="menu-level-1 fas fa-box-open" > <span>Kho hàng</span></Link>
 
                                 </li>
                             </ul>

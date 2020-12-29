@@ -57,7 +57,7 @@ export default class PopUpAddProduct extends Component<Props, State> {
                                     const currentProduct = this.state.product;
                                     currentProduct.price = event.target.valueAsNumber;
                                     this.setState({
-                                        product : currentProduct 
+                                        product: currentProduct
                                     })
                                 }}
                                 value={this.state.product.price}
@@ -72,7 +72,7 @@ export default class PopUpAddProduct extends Component<Props, State> {
                                     const currentProduct = this.state.product;
                                     currentProduct.images = event.target.value;
                                     this.setState({
-                                        product : currentProduct
+                                        product: currentProduct
                                     })
                                 }}
                                 value={this.state.product.images}
@@ -96,14 +96,23 @@ export default class PopUpAddProduct extends Component<Props, State> {
     }
     addProduct = () => {
         console.log(this.state.product)
-        productService.addProduct(this.state.product)
+        const list = this.state.product
+
+        if (list.name === "" || list.images === "") {
+            alert("Không được để trống thông tin ảnh và tên")
+        } else {
+
+            productService.addProduct(this.state.product)
+            alert('Thêm mới thành công')
+        }
+
     }
-    
+
 
 }
 interface Props {
     turnOffPopUpAdd(): void
-    
+
 }
 
 interface State {

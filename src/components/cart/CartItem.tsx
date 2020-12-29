@@ -40,7 +40,7 @@ export default class CartItem extends Component<Props, State> {
                         <span>{(this.state.quantityProduct || 1) * (this.state.product.priceSale || 0)}đ</span>
                     </div>
                     <div className="detailInfor">
-                        <AiFillDelete onClick={(event) => this.props.itemDelete(this.props.id)} style={{ fontSize: 30, color: 'red' }} />
+                        <AiFillDelete className = "delete" onClick={(event) => this.props.itemDelete(this.props.id)} style={{ fontSize: 30, color: 'red' }} />
 
                     </div>
                 </div>

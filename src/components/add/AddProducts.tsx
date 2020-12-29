@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Product } from '../../model/Product'
 import { productService } from '../../service/ProductService';
+import Products from '../home/Products';
 import PopUpAddProduct from './PopUpAddProduct';
 import PopUpUpdate from './PopUpUpdate';
 import ProductAdded from './ProductItem'
@@ -52,7 +53,9 @@ export default class AddProducts extends Component<{}, State> {
                                             onSetProduct={(event: Product) => {
                                                 console.log(event);
                                                 this.setState({ product: event })
+                                               
                                             }}
+                                            
 
                                         />
                                     )

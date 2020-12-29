@@ -39,13 +39,16 @@ export class CartService {
         quantityProduct: 1,
       });
       this.save(cart);
+      alert("Bạn đã thêm vào thành công")
     }
     // buoc 4: neu da ton tai, thi tim trong danh sach ra dung san pham va tang so luong
     else {
       if (item.id === productId) {
         item.quantityProduct++;
         this.save(cart);
+        alert("Sản phẩm đã được tăng thêm ")
       }
+
     }
   }
 }
