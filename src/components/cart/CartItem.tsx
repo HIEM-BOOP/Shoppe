@@ -13,6 +13,27 @@ export default class CartItem extends Component<Props, State> {
         }
     }
     render() {
+        const pcl = Number(this.state.product.priceSale)
+        const pc = Number(this.state.product.price)
+
+        const priceSale = pcl.toLocaleString('vi-VN',{
+            style: 'currency',
+            currency: 'VND'
+        })
+
+        const price = pc.toLocaleString('vi-VN',{
+            style: 'currency',
+            currency: 'VND'
+        })
+
+        const quatityProduct = Number(this.state.quantityProduct);
+
+        const spc = quatityProduct * pcl
+
+        const sumprice = spc.toLocaleString('vi-VN',{
+            style: 'currency',
+            currency: 'VND'
+        })
 
         return (
             <div>
@@ -24,11 +45,11 @@ export default class CartItem extends Component<Props, State> {
                     </div>
                     <div className="detailInfor"><span>{this.state.product.name} </span></div>
                     <div className="detailInfor">
-                        <span className="afterSale">{this.state.product.priceSale}</span>
-                        <span className="beforSale">{this.state.product.price}đ</span>
+                        <span className="afterSale">{priceSale}</span>
+                        <span className="beforSale">{price}</span>
                     </div>
                     <div className="detailInfor">
-                        <input type="number" min={1} id="quantityProduct" defaultValue={this.props.quantityProduct}
+                        <input type="number" min = {1} multiple placeholder = "Số lớn hơn 0" id="quantityProduct" defaultValue={this.props.quantityProduct}
                             onChange={(event) => {
                                 this.setState({ quantityProduct: event.target.valueAsNumber })
                                 console.log(this.state.quantityProduct);
@@ -37,7 +58,7 @@ export default class CartItem extends Component<Props, State> {
                         />
                     </div>
                     <div className="detailInfor">
-                        <span>{(this.state.quantityProduct || 1) * (this.state.product.priceSale || 0)}đ</span>
+                        <span>{sumprice}</span>
                     </div>
                     <div className="detailInfor">
                         <AiFillDelete className = "delete" onClick={(event) => this.props.itemDelete(this.props.id)} style={{ fontSize: 30, color: 'red' }} />

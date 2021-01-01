@@ -6,7 +6,7 @@ import { CartProduct } from '../model/CartProduct';
 
 import { cartService, CartService } from '../service/CartService'
 
-export default class Cart extends Component<{} , State> {
+export default class Cart extends Component<{}, State> {
 
     constructor(props : any){
         super(props);
@@ -22,7 +22,7 @@ export default class Cart extends Component<{} , State> {
                 {
                    this.state.true === true && <BuyingList listCart = {this.state.listCarts} />
                 }
-                <BuyerInformation/>
+                <BuyerInformation  />
             </div>
         )
     }

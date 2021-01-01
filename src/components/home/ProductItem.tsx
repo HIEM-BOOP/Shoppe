@@ -4,6 +4,18 @@ import { cartService } from '../../service/CartService'
 
 export default class ProductItem extends Component<Props, State> {
     render() {
+        const pcl = Number(this.props.product.priceSale)
+        const pc = Number(this.props.product.price)
+
+        const priceSale = pcl.toLocaleString('vi-VN',{
+            style: 'currency',
+            currency: 'VND'
+        })
+
+        const price = pc.toLocaleString('vi-VN',{
+            style: 'currency',
+            currency: 'VND'
+        })
         return (
 
             <div className="productCard">
@@ -13,8 +25,8 @@ export default class ProductItem extends Component<Props, State> {
                 </div>
                 <div className="price">
                     <p>
-                        <span className="afterSale">{this.props.product.priceSale}</span>
-                        <span className="beforSale">{this.props.product.price}</span>
+                        <span className="afterSale">{priceSale}</span>
+                        <span className="beforSale">{price}</span>
 
                     </p>
                 </div>
@@ -22,7 +34,7 @@ export default class ProductItem extends Component<Props, State> {
                     <button className="btn btn-primary"
                         onClick={(event) => {
                             cartService.addToCart(this.props.product.id)
-                            
+                            this.props.onNotifycation()
                         }}
                     >Đưa vào giỏ</button>
                 </div>
@@ -33,6 +45,7 @@ export default class ProductItem extends Component<Props, State> {
 
 export interface Props {
     product: Product;
+    onNotifycation() : void ;
 }
 
 export interface State {

@@ -67,7 +67,7 @@ export default class PopUpAddProduct extends Component<Props, State> {
                         </div>
                         <div className="item">
                             <label htmlFor="imgProduct">Hình ảnh sản phẩm</label>
-                            <input type="url" id="imgProduct" name="imgProduct" placeholder="Nhập link hình ảnh sản phẩm (Khuyến khích ảnh dạng hình vuông)"
+                            <input type="url" pattern="https?://.+" title = "Bắt đầu với http hoặc https" id="imgProduct" name="imgProduct" placeholder="Nhập link hình ảnh sản phẩm (Khuyến khích ảnh dạng hình vuông)"
                                 onChange={(event) => {
                                     const currentProduct = this.state.product;
                                     currentProduct.images = event.target.value;
@@ -81,12 +81,12 @@ export default class PopUpAddProduct extends Component<Props, State> {
 
                         </div>
                         <div className="button-item">
-                            <button className="btn btn-primary" onClick={() => {
-                                this.addProduct()
-                            }} >Tạo sản phẩm mới</button>
                             <button className="btn btn-outline" onClick={() => {
                                 this.props.turnOffPopUpAdd()
                             }} >Hủy</button>
+                            <button className="btn btn-primary" onClick={() => {
+                                this.addProduct()
+                            }} >Tạo sản phẩm mới</button>
                         </div>
                     </div>
                 </div>
@@ -97,15 +97,7 @@ export default class PopUpAddProduct extends Component<Props, State> {
     addProduct = () => {
         console.log(this.state.product)
         const list = this.state.product
-
-        if (list.name === "" || list.images === "") {
-            alert("Không được để trống thông tin ảnh và tên")
-        } else {
-
-            productService.addProduct(this.state.product)
-            alert('Thêm mới thành công')
-        }
-
+        productService.addProduct(list)
     }
 
 

@@ -36,6 +36,7 @@ class BuyingList extends Component<Props, State> {
                                     return <CartItem {...item} itemDelete={(id) => {
                                         cartService.delete(id, this.state.cartProduct)
                                         this.setState({cartProduct : cartService.delete(id , this.state.cartProduct)})
+                                        console.log(this.state.cartProduct);
                                     }} />
                                 })
                             }
