@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Product } from '../../model/Product'
-import { productService, ProductService } from '../../service/axios/ProductService';
+import { productService } from '../../service/axios/ProductService';
 import Products from '../home/Products';
 import PopUpAddProduct from './PopUpAddProduct';
 import PopUpUpdate from './PopUpUpdate';
@@ -17,11 +17,11 @@ export default class AddProducts extends Component<{}, State> {
             product: { id: 0 }
         }
     }
-    componentDidMount(){
-        productService.list().then(products =>{
+    componentDidMount() {
+        productService.list().then(products => {
             console.log(products)
             this.setState({
-                products:products
+                products: products
             })
         })
     }
@@ -56,12 +56,19 @@ export default class AddProducts extends Component<{}, State> {
                                             }} product={item} key={item.id}
                                             onDelete={(id) => {
                                                 productService.deleteProduct(id, this.state.products)
+                                                productService.list().then(products => {
+                                                    console.log(products)
+                                                    this.setState({
+                                                        products: products
+                                                    })
+                                                })
+                                                // productService.list()
                                                 // this.setState({ products: productService.deleteProduct(id, this.state.products) })
                                             }}
                                             onSetProduct={(event: Product) => {
                                                 console.log(event);
                                                 this.setState({ product: event })
-                                               
+
                                             }}
                                         />
                                     )
