@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Product } from '../../model/Product';
-import { productService } from '../../service/ProductService';
+import { productService } from '../../service/axios/ProductService';
 
 export default class PopUpAddProduct extends Component<Props, State> {
     constructor(props: any) {
@@ -8,10 +8,10 @@ export default class PopUpAddProduct extends Component<Props, State> {
         this.state = {
             product: {
                 id: new Date().getTime(),
-                images: '',
+                image: '',
                 name: '',
                 price: 0,
-                priceSale: 0,
+                salePrice: 0,
             }
 
         }
@@ -42,12 +42,12 @@ export default class PopUpAddProduct extends Component<Props, State> {
                             <input type="number" id="afterSale" name="afterSale" placeholder="Nhập giá bán"
                                 onChange={(event) => {
                                     let currentProduct = this.state.product;
-                                    currentProduct.priceSale = event.target.valueAsNumber;
+                                    currentProduct.salePrice = event.target.valueAsNumber;
                                     this.setState({
                                         product: currentProduct
                                     })
                                 }}
-                                value={this.state.product.priceSale}
+                                value={this.state.product.salePrice}
                             />
                         </div>
                         <div className="item">
@@ -70,12 +70,12 @@ export default class PopUpAddProduct extends Component<Props, State> {
                             <input type="url" pattern="https?://.+" title = "Bắt đầu với http hoặc https" id="imgProduct" name="imgProduct" placeholder="Nhập link hình ảnh sản phẩm (Khuyến khích ảnh dạng hình vuông)"
                                 onChange={(event) => {
                                     const currentProduct = this.state.product;
-                                    currentProduct.images = event.target.value;
+                                    currentProduct.image = event.target.value;
                                     this.setState({
                                         product: currentProduct
                                     })
                                 }}
-                                value={this.state.product.images}
+                                value={this.state.product.image}
 
                             />
 

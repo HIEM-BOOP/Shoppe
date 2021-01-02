@@ -13,15 +13,15 @@ export default class CartItem extends Component<Props, State> {
         }
     }
     render() {
-        const pcl = Number(this.state.product.priceSale)
+        const pcl = Number(this.state.product.salePrice)
         const pc = Number(this.state.product.price)
 
-        const priceSale = pcl.toLocaleString('vi-VN',{
+        const priceSale = pcl.toLocaleString('vi-VN', {
             style: 'currency',
             currency: 'VND'
         })
 
-        const price = pc.toLocaleString('vi-VN',{
+        const price = pc.toLocaleString('vi-VN', {
             style: 'currency',
             currency: 'VND'
         })
@@ -30,7 +30,7 @@ export default class CartItem extends Component<Props, State> {
 
         const spc = quatityProduct * pcl
 
-        const sumprice = spc.toLocaleString('vi-VN',{
+        const sumprice = spc.toLocaleString('vi-VN', {
             style: 'currency',
             currency: 'VND'
         })
@@ -40,7 +40,7 @@ export default class CartItem extends Component<Props, State> {
                 <div className="cart">
                     <div className="detailInfor">
                         <div className="img-item">
-                            <img src={this.state.product.images} className="img" />
+                            <img src={this.state.product.image} className="img" />
                         </div>
                     </div>
                     <div className="detailInfor"><span>{this.state.product.name} </span></div>
@@ -49,7 +49,7 @@ export default class CartItem extends Component<Props, State> {
                         <span className="beforSale">{price}</span>
                     </div>
                     <div className="detailInfor">
-                        <input type="number" min = {1} multiple placeholder = "Số lớn hơn 0" id="quantityProduct" defaultValue={this.props.quantityProduct}
+                        <input type="number" min={1} multiple placeholder="Số lớn hơn 0" id="quantityProduct" defaultValue={this.props.quantityProduct}
                             onChange={(event) => {
                                 this.setState({ quantityProduct: event.target.valueAsNumber })
                                 console.log(this.state.quantityProduct);
@@ -61,12 +61,11 @@ export default class CartItem extends Component<Props, State> {
                         <span>{sumprice}</span>
                     </div>
                     <div className="detailInfor">
-                        <AiFillDelete className = "delete" onClick={(event) => this.props.itemDelete(this.props.id)} style={{ fontSize: 30, color: 'red' }} />
+                        <AiFillDelete className="delete" onClick={(event) => this.props.itemDelete(this.props.id)} style={{ fontSize: 30, color: 'red' }} />
 
                     </div>
                 </div>
             </div>
-
         )
     }
 }

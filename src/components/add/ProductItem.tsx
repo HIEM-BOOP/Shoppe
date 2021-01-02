@@ -4,14 +4,13 @@ import { Product } from '../../model/Product';
 export default class ProductAdded extends Component<Props, {}> {
     render() {
 
-        const pcl = Number(this.props.product.priceSale)
+        const pcl = Number(this.props.product.salePrice)
         const pc = Number(this.props.product.price)
 
         const priceSale = pcl.toLocaleString('vi-VN',{
             style: 'currency',
             currency: 'VND'
         })
-
         const price = pc.toLocaleString('vi-VN',{
             style: 'currency',
             currency: 'VND'
@@ -27,7 +26,7 @@ export default class ProductAdded extends Component<Props, {}> {
                     <img
                         className='image'
                         width="400" height="400"
-                        src={this.props.product.images}
+                        src={this.props.product.image}
                         alt=""
                     />
                     <div className="nameProduct">

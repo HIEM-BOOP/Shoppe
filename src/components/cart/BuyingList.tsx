@@ -9,10 +9,7 @@ class BuyingList extends Component<Props, State> {
     constructor(props: any) {
         super(props);
         this.state = {
-            
-            cartProduct : cartService.list() , 
-
-            
+            cartProduct: cartService.list(),
         }
     }
     render() {
@@ -35,12 +32,10 @@ class BuyingList extends Component<Props, State> {
                                 this.props.listCart.map((item) => {
                                     return <CartItem {...item} itemDelete={(id) => {
                                         cartService.delete(id, this.state.cartProduct)
-                                        this.setState({cartProduct : cartService.delete(id , this.state.cartProduct)})
-                                        console.log(this.state.cartProduct);
+                                        this.setState({ cartProduct: cartService.delete(id, this.state.cartProduct) })
                                     }} />
                                 })
                             }
-
                         </div>
                         <TotalAmounts />
                     </div>

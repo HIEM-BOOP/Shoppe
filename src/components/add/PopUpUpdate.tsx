@@ -24,10 +24,10 @@ export default class PopUpUpdate extends Component<Props, State> {
                     </div>
                     <div className="item">
                         <label htmlFor="afterSale">Giá bán</label>
-                        <input type="number" id="afterSale" name="afterSale" defaultValue={this.props.product.priceSale}
+                        <input type="number" id="afterSale" name="afterSale" defaultValue={this.props.product.salePrice}
                             onChange={(event) => {
                                 this.setState({
-                                    priceSale: event.target.valueAsNumber
+                                    salePrice: event.target.valueAsNumber
                                 })
                             }}
                         />
@@ -43,13 +43,13 @@ export default class PopUpUpdate extends Component<Props, State> {
                     </div>
                     <div className="item">
                         <label htmlFor="imgProduct">Hình ảnh sản phẩm</label>
-                        <input type="url" id="imgProduct" name="imgProduct" defaultValue={this.props.product.images}
+                        <input type="url" id="imgProduct" name="imgProduct" defaultValue={this.props.product.image}
 
                             onChange={(event) => {
                                 this.setState({
-                                    images: event.target.value
+                                    image: event.target.value
                                 })
-                                console.log(this.state.images);
+                                console.log(this.state.image);
 
                             }}
                         />

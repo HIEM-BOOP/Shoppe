@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Product } from '../../model/Product'
-import { productService, ProductService } from '../../service/ProductService';
+import { productService } from '../../service/axios/ProductService';
 import PopUpnotifycation from '../notifycation/PopUpnotifycation';
 import ProductItem from './ProductItem'
 
@@ -9,11 +9,19 @@ export default class Products extends Component<{}, State> {
     constructor(props: any) {
         super(props);
         this.state = {
-            products: productService.list(),
+            products:[],
             isNotifycation: false,
         }
     }
 
+    componentDidMount(){
+        productService.list().then(products =>{
+            console.log(products)
+            this.setState({
+                products:products
+            })
+        })
+    }
     render() {
         return (
             <div className="products">

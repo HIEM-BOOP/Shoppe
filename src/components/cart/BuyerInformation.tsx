@@ -106,8 +106,6 @@ export default class BuyerInformation extends Component<{}, State> {
         console.log(list);
         buyerService.addBuyer(list)
         window.localStorage.removeItem('cart');
-      
-
     }
 }
 

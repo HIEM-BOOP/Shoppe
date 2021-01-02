@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Product } from '../../model/Product'
-import { productService } from '../../service/ProductService';
+import { productService, ProductService } from '../../service/axios/ProductService';
 import Products from '../home/Products';
 import PopUpAddProduct from './PopUpAddProduct';
 import PopUpUpdate from './PopUpUpdate';
@@ -13,9 +13,17 @@ export default class AddProducts extends Component<{}, State> {
         this.state = {
             isOpenPopupAdd: false,
             isOpenPopupDate: false,
-            products: productService.list(),
+            products: [],
             product: { id: 0 }
         }
+    }
+    componentDidMount(){
+        productService.list().then(products =>{
+            console.log(products)
+            this.setState({
+                products:products
+            })
+        })
     }
     render() {
         return (
@@ -48,15 +56,13 @@ export default class AddProducts extends Component<{}, State> {
                                             }} product={item} key={item.id}
                                             onDelete={(id) => {
                                                 productService.deleteProduct(id, this.state.products)
-                                                this.setState({ products: productService.deleteProduct(id, this.state.products) })
+                                                // this.setState({ products: productService.deleteProduct(id, this.state.products) })
                                             }}
                                             onSetProduct={(event: Product) => {
                                                 console.log(event);
                                                 this.setState({ product: event })
                                                
                                             }}
-                                            
-
                                         />
                                     )
                                 }

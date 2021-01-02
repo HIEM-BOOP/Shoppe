@@ -4,7 +4,7 @@ import { cartService } from '../../service/CartService'
 
 export default class ProductItem extends Component<Props, State> {
     render() {
-        const pcl = Number(this.props.product.priceSale)
+        const pcl = Number(this.props.product.salePrice)
         const pc = Number(this.props.product.price)
 
         const priceSale = pcl.toLocaleString('vi-VN',{
@@ -19,7 +19,7 @@ export default class ProductItem extends Component<Props, State> {
         return (
 
             <div className="productCard">
-                <img src={this.props.product.images} alt="" />
+                <img src={this.props.product.image} alt="" />
                 <div className="nameProduct">
                     <p>{this.props.product.name}</p>
                 </div>
