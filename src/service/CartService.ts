@@ -16,7 +16,7 @@ export class CartService {
   };
 
   delete = (id: number, listCart: CartProduct[]) => {
-    listCart = listCart.filter((item) => item.id !== id);
+    listCart = listCart.filter((item) => item.productId !== id);
     this.save(listCart);
     return listCart;
   };
@@ -28,23 +28,25 @@ export class CartService {
    * @param {any} productId:number
    * @returns {any}
    */
+
+
   addToCart(productId: number) {
     // buoc 1: lay danh sach cart
     const cart = this.list();
     // buoc 2: kiem tra ton tai
-    const item = cart.find((item) => item.id === productId);
+    const item = cart.find((item) => item.productId === productId);
     // buoc 3: neu khong ton tai thi push moi
     if (item === undefined) {
       cart.push({
-        id: productId,
-        quantityProduct: 1,
+        productId: productId,
+        quantity: 1,
       });
       this.save(cart);
     }
     // buoc 4: neu da ton tai, thi tim trong danh sach ra dung san pham va tang so luong
     else {
-      if (item.id === productId) {
-        item.quantityProduct++;
+      if (item.productId === productId) {
+        item.quantity++;
         this.save(cart);
       }
 

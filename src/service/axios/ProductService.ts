@@ -11,7 +11,10 @@ export class ProductService {
       });
   }
   getById = (id: number) => {
-    axios.get(`http://localhost:5030/product/${id}`)
+    return axios.get(`http://localhost:5030/product/${id}`).then(res =>{
+      return res.data ;
+    })
+     
   }
   save = (product: Product[]) => {
   };
@@ -20,7 +23,6 @@ export class ProductService {
   };
   deleteProduct = (id: number, listProduct: Product[]) => {
     axios.delete(`http://localhost:5030/product/${id}`).then(res => {
-    
         let newArray = new Array
         listProduct.map(item => {
           item.id !== id ? newArray.push(item) : console.log()
@@ -31,6 +33,9 @@ export class ProductService {
     })
   };
   updateProduct = (id: number, product: Product) => {
+    return axios.put(`http://localhost:5030/product/`, product).then(res =>{
+      return res.data
+    })
   }
 }
 export const productService = new ProductService();
