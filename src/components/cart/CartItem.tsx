@@ -1,14 +1,15 @@
 import React, { Component } from 'react'
 import { AiFillDelete } from "react-icons/ai";
 import { Product } from '../../model/Product';
-import { productService } from '../../service/ProductService';
+import { productService, ProductService } from '../../service/ProductService';
+import ProductAdded from '../add/ProductItem';
 
 
 export default class CartItem extends Component<Props, State> {
     constructor(props: any) {
         super(props);
         this.state = {
-            quantityProduct: this.props.quantityProduct,
+            quantity: this.props.quantity,
             product: productService.getById(this.props.id) as Product
         }
     }
@@ -26,7 +27,7 @@ export default class CartItem extends Component<Props, State> {
             currency: 'VND'
         })
 
-        const quatityProduct = Number(this.state.quantityProduct);
+        const quatityProduct = Number(this.state.quantity);
 
         const spc = quatityProduct * pcl
 
@@ -49,10 +50,10 @@ export default class CartItem extends Component<Props, State> {
                         <span className="beforSale">{price}</span>
                     </div>
                     <div className="detailInfor">
-                        <input type="number" min={1} multiple placeholder="Số lớn hơn 0" id="quantityProduct" defaultValue={this.props.quantityProduct}
+                        <input type="number" min={1} multiple placeholder="Số lớn hơn 0" id="quantityProduct" defaultValue={this.props.quantity}
                             onChange={(event) => {
-                                this.setState({ quantityProduct: event.target.valueAsNumber })
-                                console.log(this.state.quantityProduct);
+                                this.setState({ quantity: event.target.valueAsNumber })
+                                console.log(this.state.quantity);
                             }}
 
                         />
@@ -72,10 +73,10 @@ export default class CartItem extends Component<Props, State> {
 
 interface Props {
     id: number,
-    quantityProduct: number,
+    quantity: number,
     itemDelete(event: number): void,
 }
 interface State {
     product: Product
-    quantityProduct: number;
+    quantity: number;
 }
