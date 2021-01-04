@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Product } from '../../model/Product';
-import { productService } from '../../service/ProductService';
+import { productService } from '../../service/axios/ProductService';
 
 
 export default class PopUpUpdate extends Component<Props, State> {
@@ -59,7 +59,7 @@ export default class PopUpUpdate extends Component<Props, State> {
                             onClick={() => {
                                 productService.updateProduct(this.props.product.id,this.state);
                                 // alert("Bạn đã sữa thành công")
-                                // window.location.href = "../add/"
+                                window.location.href = "http://localhost:3000/add-products"
                             }}
                         >Lưu</button>
                         <button className="btn btn-outline" onClick={() => {

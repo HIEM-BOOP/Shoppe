@@ -58,8 +58,8 @@ export default class ProductAdded extends Component<Props, {}> {
 
 export interface Props {
     product: Product;
-    onUpdate(id: number): void,
-    onDelete(id: number): void;
+    onUpdate(id: string): void,
+    onDelete(id: string): void;
     onSetProduct(item: Product): void
 }
 

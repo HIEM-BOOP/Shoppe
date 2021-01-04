@@ -15,7 +15,7 @@ export class CartService {
     let jsonProduct = localStorage.setItem("cart", JSON.stringify(cart));
   };
 
-  delete = (id: number, listCart: CartProduct[]) => {
+  delete = (id: string, listCart: CartProduct[]) => {
     listCart = listCart.filter((item) => item.productId !== id);
     this.save(listCart);
     return listCart;
@@ -30,7 +30,7 @@ export class CartService {
    */
 
 
-  addToCart(productId: number) {
+  addToCart(productId: string) {
     // buoc 1: lay danh sach cart
     const cart = this.list();
     // buoc 2: kiem tra ton tai

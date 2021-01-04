@@ -72,9 +72,9 @@ export default class CartItem extends Component<Props, State> {
 }
 
 interface Props {
-    id: number,
+    id: string,
     quantity: number,
-    itemDelete(event: number): void,
+    itemDelete(event: string): void,
 }
 interface State {
     product: Product

@@ -30,10 +30,10 @@ class BuyingList extends Component<Props, State> {
                             <div className="productInfor" id="carts" />
                             {
                                 this.props.listCart.map((item) => {
-                                    return <CartItem {...item} itemDelete={(id) => {
+                                    return <CartItem {...item} /* itemDelete={(id) => {
                                         cartService.delete(id, this.state.cartProduct)
                                         this.setState({ cartProduct: cartService.delete(id, this.state.cartProduct) })
-                                    }} />
+                                    }} */ />
                                 })
                             }
                         </div>

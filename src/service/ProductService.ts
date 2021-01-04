@@ -7,7 +7,7 @@ export class ProductService {
 
     return product;
   }
-  getById = (id : number) => {
+  getById = (id : string) => {
       const products = this.list();
 
       const product = products.find((item) =>{
@@ -27,7 +27,7 @@ export class ProductService {
     products.push(product);
     this.save(products)
   };
-  deleteProduct = (id : number , listProduct:Product[] )  => {
+  deleteProduct = (id : string , listProduct:Product[] )  => {
     console.log(id)
     let newArray = new  Array
     listProduct.map(item =>{
@@ -38,7 +38,7 @@ export class ProductService {
     return newArray 
 
   };
-  updateProduct = (id : number ,product:Product ) => {
+  updateProduct = (id : string ,product:Product ) => {
     const listProduct = this.list();
     let newArray = new Array() ;
     listProduct.map((item: any) => {

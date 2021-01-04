@@ -21,7 +21,7 @@ export class ProductService {
   addProduct = (product: Product) => {
     axios.post('http://localhost:5030/product', product);
   };
-  deleteProduct = (id: number, listProduct: Product[]) => {
+  deleteProduct = (id: string, listProduct: Product[]) => {
     axios.delete(`http://localhost:5030/product/${id}`).then(res => {
         let newArray = new Array
         listProduct.map(item => {
@@ -32,7 +32,7 @@ export class ProductService {
       
     })
   };
-  updateProduct = (id: number, product: Product) => {
+  updateProduct = (id: string, product: Product) => {
     return axios.put(`http://localhost:5030/product/`, product).then(res =>{
       return res.data
     })

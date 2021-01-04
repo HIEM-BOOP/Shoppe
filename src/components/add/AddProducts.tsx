@@ -14,7 +14,7 @@ export default class AddProducts extends Component<{}, State> {
             isOpenPopupAdd: false,
             isOpenPopupDate: false,
             products: [],
-            product: { id: 0 }
+            product: { id: '' }
         }
     }
     componentDidMount() {

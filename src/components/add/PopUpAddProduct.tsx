@@ -7,7 +7,7 @@ export default class PopUpAddProduct extends Component<Props, State> {
         super(props);
         this.state = {
             product: {
-                id: new Date().getTime(),
+                id: 'new Date().getTime()',
                 image: '',
                 name: '',
                 price: 0,
