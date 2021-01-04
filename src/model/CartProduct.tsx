@@ -1,4 +1,4 @@
 export interface CartProduct {
-    id : number ,
-    quantityProduct : number ,
+    productId : string ,
+    quantity : number ,
 }
