@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { AiFillDelete } from "react-icons/ai";
 import { Product } from '../../model/Product';
 import { productService, ProductService } from '../../service/ProductService';
-import ProductAdded from '../add/ProductItem';
 
 
 export default class CartItem extends Component<Props, State> {
@@ -63,7 +62,6 @@ export default class CartItem extends Component<Props, State> {
                     </div>
                     <div className="detailInfor">
                         <AiFillDelete className="delete" onClick={(event) => this.props.itemDelete(this.props.id)} style={{ fontSize: 30, color: 'red' }} />
-
                     </div>
                 </div>
             </div>

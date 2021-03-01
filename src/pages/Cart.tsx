@@ -4,7 +4,7 @@ import BuyingList from '../components/cart/BuyingList'
 import Header from '../components/Header'
 import { CartProduct } from '../model/CartProduct';
 
-import { cartService, CartService } from '../service/CartService'
+import { cartService } from '../service/CartService'
 
 export default class Cart extends Component<{}, State> {
 
