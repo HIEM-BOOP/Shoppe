@@ -17,14 +17,14 @@ export default class AddProducts extends Component<{}, State> {
             product: { id: '' }
         }
     }
-    // componentDidMount() {
-    //     productService.list().then(products => {
-    //         console.log(products)
-    //         this.setState({
-    //             products: products
-    //         })
-    //     })
-    // }
+    componentDidMount() {
+        productService.list1().then(products => {
+            console.log(products)
+            this.setState({
+                products: products
+            })
+        })
+    }
     render() {
         return (
             <div>
@@ -56,12 +56,12 @@ export default class AddProducts extends Component<{}, State> {
                                             }} product={item} key={item.id}
                                             onDelete={(id) => {
                                                 productService.deleteProduct(id, this.state.products)
-                                                // productService.list().then(products => {
-                                                //     console.log(products)
-                                                //     this.setState({
-                                                //         products: products
-                                                //     })
-                                                // })
+                                                productService.list1().then(products => {
+                                                    console.log(products)
+                                                    this.setState({
+                                                        products: products
+                                                    })
+                                                })
                                                 // productService.list()
                                                 // this.setState({ products: productService.deleteProduct(id, this.state.products) })
                                             }}

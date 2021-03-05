@@ -22,6 +22,14 @@ export class ProductService {
 
       });
   }
+
+  list1():  Promise<Product[]> {
+    return axios.get(`http://localhost:8080/API/product`).then(res =>{
+        console.log(res);
+        return res.data
+      })
+  }
+  
   getById = (id: string) => {
     return axios.get(`http://localhost:8080/API/product/${id}`).then(res => {
       return res.data;
