@@ -1,5 +1,5 @@
 
-import './App.css';
+import './App.css'
 import {
   BrowserRouter as Router,
   Switch,
@@ -9,7 +9,9 @@ import {
 import Home from './pages/Home';
 import Add from './pages/Add';
 import Cart from './pages/Cart';
-
+import SignIn from './components/login/SingIn';
+import { useState } from 'react';
+import Detail from './components/home/Detail';
 
 function App() {
   return (
@@ -18,7 +20,7 @@ function App() {
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
         <Switch>
-          <Route path="/home-shoppe">
+          <Route path="/home">
             < Home />
           </Route>
           <Route path="/add-products">
@@ -27,9 +29,11 @@ function App() {
           <Route path="/cart-products">
             <Cart/>
           </Route>
-
+          <Route path="/detail">
+            <Detail/>
+          </Route>
           <Route path="/">
-            <Home />
+            <SignIn />
           </Route>
         </Switch>
       </div>
@@ -39,3 +43,7 @@ function App() {
 }
 
 export default App;
+
+interface State {
+  isLogin : boolean;
+}

@@ -57,9 +57,10 @@ export default class PopUpUpdate extends Component<Props, State> {
                     <div className="button-item">
                         <button className="btn btn-primary"
                             onClick={() => {
-                                productService.updateProduct(this.props.product.id,this.state);
+                                productService.updateProduct(this.props.product?.id || "null", this.state);
+                                this.props.isOpenPopUpDate()
                                 // alert("Bạn đã sữa thành công")
-                                // window.location.href = "http://localhost:3000/add-products"
+                                window.location.href = "http://localhost:3000/add-products"
                             }}
                         >Lưu</button>
                         <button className="btn btn-outline" onClick={() => {

@@ -1,10 +1,11 @@
-import { Box, Button, Paper } from '@material-ui/core'
+import { Button } from '@material-ui/core'
+import SearchIcon from '@material-ui/icons/Search'
 import React, { Component } from 'react'
 import NumberFormat from 'react-number-format'
+import {
+    Link
+} from "react-router-dom"
 import { Product } from '../../model/Product'
-import { cartService } from '../../service/CartService'
-import SearchIcon from '@material-ui/icons/Search';
-
 export default class ProductItem extends Component<Props, State> {
     render() {
         // const pcl = Number(this.props.product.salePrice)
@@ -39,17 +40,20 @@ export default class ProductItem extends Component<Props, State> {
                 </div>
                 <div className="bottom" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
 
-                    <div className="detail">
-                        <Button>
-                            <SearchIcon />
-                        </Button>
+                    <div className="detail" >
+                        <Link to={`/detail/?id=${this.props.product.id}`}>
+                            <Button onClick={() => {
+                            }}>
+                                <SearchIcon />
+                            </Button>
+                        </Link>
                     </div>
                     <div className="button">
                         <button className="btn btn-primary"
-                            // onClick={(event) => {
-                            //     cartService.addToCart(this.props.product.id)
-                            //     this.props.onNotifycation()
-                            // }}
+                        // onClick={(event) => {
+                        //     cartService.addToCart(this.props.product.id)
+                        //     this.props.onNotifycation()
+                        // }}
                         >Đưa vào giỏ</button>
                     </div>
                 </div>
@@ -61,6 +65,7 @@ export default class ProductItem extends Component<Props, State> {
 export interface Props {
     product: Product;
     // onNotifycation(): void;
+
 }
 
 export interface State {

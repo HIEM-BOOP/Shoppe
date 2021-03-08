@@ -20,7 +20,7 @@ export default class ProductAdded extends Component<Props, {}> {
                 <div className="productCard">
                     <div className="setting">
                         <span className="material-icons" onClick={() => {
-                            this.props.onDelete(this.props.product.id)
+                            this.props.onDelete(this.props.product.id || "null")
                         }}><AiFillDelete style={{ fontSize: 30 }} /></span>
                     </div>
                     <img
@@ -41,7 +41,7 @@ export default class ProductAdded extends Component<Props, {}> {
                     <div className="button">
                         <button className="btn btn-primary"
                             onClick={() => {
-                                this.props.onUpdate(this.props.product.id)
+                                this.props.onUpdate(this.props.product.id || "null")
                                 console.log(this.props.product);
                                 this.props.onSetProduct(this.props.product)
                                 console.log(this.props.product)

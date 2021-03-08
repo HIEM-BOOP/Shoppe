@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -12,12 +12,14 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import { User } from '../../model/User';
+import { userService } from '../../service/axios/UserService';
 function Copyright() {
     return (
         <Typography variant="body2" color="textSecondary" align="center">
             {'Copyright © '}
             <Link color="inherit" href="https://material-ui.com/">
-                Your Website
+                Hiem So CUTE
       </Link>{' '}
             {new Date().getFullYear()}
             {'.'}
@@ -46,6 +48,27 @@ const useStyles = makeStyles((theme) => ({
 
 
 export default function SignIn() {
+    const [state, setstate] = React.useState<User>({
+        id: 1,
+        email: 'hiemkbr@gmail.com',
+        password: 'hiemhiem',
+        role: false,
+        isLogin: false,
+    })
+    const checkLogin = () => {
+        let userName = document.cookie
+        if(userName === 'account'){
+            setstate({ 
+                ...state,
+                isLogin : true
+            })
+            return true;
+        }
+
+        
+    }
+
+    
     const classes = useStyles();
     return (
         <Container component="main" maxWidth="xs">
@@ -68,6 +91,13 @@ export default function SignIn() {
                         name="email"
                         autoComplete="email"
                         autoFocus
+                        onChange={(event) => {
+                            setstate({
+                                ...state,
+                                email: event.target.value
+                            })
+                            console.log(state.email)
+                        }}
                     />
                     <TextField
                         variant="outlined"
@@ -79,17 +109,28 @@ export default function SignIn() {
                         type="password"
                         id="password"
                         autoComplete="current-password"
+                        onChange={(event) => {
+                            setstate({
+                                ...state,
+                                password: event.target.value
+                            })
+                            console.log(state.password)
+                        }}
                     />
                     <FormControlLabel
                         control={<Checkbox value="remember" color="primary" />}
                         label="Remember me"
                     />
+                    
                     <Button
-                        type="submit"
                         fullWidth
                         variant="contained"
                         color="primary"
                         className={classes.submit}
+                        onClick={(e) => {
+                            userService.checkLogin(state)
+                            checkLogin() ? window.location.href ="/home" : console.log("haha")
+                        }}
                     >
                         Sign In
           </Button>
@@ -113,4 +154,3 @@ export default function SignIn() {
         </Container>
     );
 }
-

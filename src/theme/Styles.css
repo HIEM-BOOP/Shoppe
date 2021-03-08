@@ -1,0 +1,56 @@
+.pop-up .container{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    position: fixed;
+    top:0;
+    left: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 100px;
+
+}
+.pop-up .content{
+    padding: 50px 30px;
+    min-width: 50%;
+    border: 1px solid #ddd;
+    background-color: white;
+}
+.pop-up .content .item input{
+    display: block;
+    margin-bottom: 20px;
+    padding: 5px 10px;
+    border-radius: 3px;
+}
+.pop-up .content .title{
+    margin-bottom: 20px;
+    text-align: center;
+}
+.products{
+    margin-top: 150px;
+}
+.products .content .productCard .setting {
+    text-align: right;
+}
+.products .content .productCard .setting .material-icons{
+    color: var(--primary-color);
+}
+.products .content .productCard .setting .material-icons:hover{
+    color: var(--primary-color-hover);
+}
+
+.pop-up .content .item label{
+    display: block;
+    margin-bottom: 5px;
+    color:  var(--primary-color) ;
+}
+.pop-up .content .button-item{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.pop-up .content .button-item .btn{
+    margin: 10px;
+}

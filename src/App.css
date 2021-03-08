@@ -203,9 +203,11 @@ footer {
 .menu-lv1:hover {
   background-color: var(--primary-color-hover);
 }
-.menu-level-1:hover{
+
+.menu-level-1:hover {
   background-color: var(--primary-color-hover);
 }
+
 .menu-right-lv1 .fa-box-open {
   background-color: var(--primary-color-hover);
 
@@ -583,8 +585,20 @@ footer {
   border: 1px solid #ddd;
   background-color: white;
 }
+
 .win-notification {
   position: fixed;
   bottom: 50px;
   right: 50px;
-} 
+}
+
+/* detail */
+.detail {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.content_right {
+  margin-left: 20px;
+  width: 300px;
+}

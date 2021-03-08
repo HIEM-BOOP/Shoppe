@@ -6,24 +6,26 @@ import Pagination from '@material-ui/lab/Pagination';
 import { Typography } from '@material-ui/core';
 import { productService } from '../../service/axios/ProductService';
 import { PaginationProduct } from '../../model/PaginationProduct';
+import Detail from './Detail';
 
 export default function Products() {
     const [state, setstate] = useState<PaginationProduct>({
-            product: [],
-            page: 1,
-            pageSize: 6,
-            totalPage: 1,
-        // isNotifycation: false
-
+        product: [],
+        page: 1,
+        pageSize: 6,
+        totalPage: 1,
+    })
+    const [detail , setDetail] = useState<State>({
+        detail : false ,
     })
     useEffect(() => {
         productService.list(state?.page, state?.pageSize).then(
             paging => {
                 setstate({
-                        product: paging.product,
-                        page: paging.page,
-                        pageSize: paging.pageSize,
-                        totalPage: paging.totalPage
+                    product: paging.product,
+                    page: paging.page,
+                    pageSize: paging.pageSize,
+                    totalPage: paging.totalPage
                 })
                 console.log(state?.page)
                 console.log(state?.product)
@@ -41,30 +43,36 @@ export default function Products() {
     //         })
     //     }, 2000);
     // }
-
+    // tắt mở detail 
+   
     const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
-        
         setstate({
-                ...state,
-                page: value
+            ...state,
+            page: value
         })
     }
     return (
-        <div className="products">
-            <div className="container">
-                <div className="content" id="products">
-                    {
-                        state?.product?.map((item: any)=>
-                            <ProductItem /* onNotifycation={ closePopup} */ product={item}></ProductItem>
-                        )
-                    }
+        <div>
+            <div className="products">
+                <div className="container">
+                    <div className="content" id="products">
+                        {
+                           
+                            state?.product?.map((item: any) =>
+                                <ProductItem /* onNotifycation={ closePopup} */ product={item}></ProductItem>
+                            )
+                        }
+                    </div>
+                </div>
+                {/* {state.isNotifycation && <PopUpnotifycation />} */}
+                <div className="content" style={{ width: '1100px', margin: 'auto', alignItems: "center", padding: '10px', justifyContent: "center" }}>
+                    <Typography>Page: {state?.page}</Typography>
+                    <Pagination count={state?.totalPage} page={state?.page} color="secondary" onChange={handleChange} showFirstButton showLastButton />
                 </div>
             </div>
-            {/* {state.isNotifycation && <PopUpnotifycation />} */}
-            <div className="content" style={{ width: '1100px', margin: 'auto', alignItems: "center", padding: '10px', justifyContent: "center" }}>
-                <Typography>Page: {state?.page}</Typography>
-                <Pagination count={state?.totalPage} page={state?.page} color="secondary" onChange={handleChange} showFirstButton showLastButton />
-            </div>
+            {
+                detail.detail && <Detail/>
+            }
         </div>
     )
 }
@@ -72,4 +80,5 @@ export default function Products() {
 export interface State {
     products?: PaginationProduct,
     isNotifycation?: boolean,
+    detail : boolean,
 }

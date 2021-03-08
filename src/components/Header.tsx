@@ -15,10 +15,10 @@ export default class Header extends Component {
                         <div className="content">
                             <ul className="menu-left-lv1">
                                 <li className="menu">
-                                    <a href="/src/pages/Home.tsx" className="menu-lv1">Home</a>
+                                    <a href="home" className="menu-lv1">Home</a>
                                 </li>
                                 <li className="menu">
-                                    <a href="/src/pages/Home.tsx" className="menu-lv1">Quần áo</a>
+                                    <a href="home" className="menu-lv1">Quần áo</a>
                                     <ul className="menu-left-lv2">
                                         <li className="menu-lv2">
                                             <a href="">Quần áo nam</a>

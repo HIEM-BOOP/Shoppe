@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Product } from '../../model/Product';
-import { productService } from '../../service/axios/ProductService';
-
+import { productService } from '../../service/axios/ProductService'
+import ckeditor from '@ckeditor/ckeditor5-react'
 export default class PopUpAddProduct extends Component<Props, State> {
     constructor(props: any) {
         super(props);
@@ -17,6 +17,7 @@ export default class PopUpAddProduct extends Component<Props, State> {
         }
     }
     render() {
+        console.log(this.state.product.image);
         return (
             <div>
                 <div className="pop-up" id="popUpEditProduct"><div className="container">
@@ -67,18 +68,24 @@ export default class PopUpAddProduct extends Component<Props, State> {
                         </div>
                         <div className="item">
                             <label htmlFor="imgProduct">Hình ảnh sản phẩm</label>
-                            <input type="url" pattern="https?://.+" title = "Bắt đầu với http hoặc https" id="imgProduct" name="imgProduct" placeholder="Nhập link hình ảnh sản phẩm (Khuyến khích ảnh dạng hình vuông)"
+                            <input type="file" pattern="https?://.+" title="Bắt đầu với http hoặc https" id="imgProduct" name="imgProduct" placeholder="Nhập link hình ảnh sản phẩm (Khuyến khích ảnh dạng hình vuông)"
                                 onChange={(event) => {
-                                    const currentProduct = this.state.product;
-                                    currentProduct.image = event.target.value;
-                                    this.setState({
-                                        product: currentProduct
-                                    })
+                                    // const currentProduct = this.state.product;
+                                    // currentProduct.image = event.target.value;
+                                    // this.setState({
+                                    //     product: currentProduct
+                                    // })
+                                    this.uploadImage(event);
                                 }}
-                                value={this.state.product.image}
+                            // value={this.state.product.image}
 
                             />
 
+                        </div>
+                        <div className="item">
+                            <label htmlFor="">Nội dung sản phẩm</label>
+                            {/* <input type="text" name="description" /> */}
+                           
                         </div>
                         <div className="button-item">
                             <button className="btn btn-outline" onClick={() => {
@@ -86,6 +93,9 @@ export default class PopUpAddProduct extends Component<Props, State> {
                             }} >Hủy</button>
                             <button className="btn btn-primary" onClick={() => {
                                 this.addProduct()
+                                setTimeout(() => {
+                                    this.props.turnOffPopUpAdd()
+                                }, 1000)
                             }} >Tạo sản phẩm mới</button>
                         </div>
                     </div>
@@ -99,8 +109,35 @@ export default class PopUpAddProduct extends Component<Props, State> {
         const list = this.state.product
         productService.addProduct(list)
     }
+    // 
+    uploadImage = async (event: any) => {
+        const file = event.target.files;
+        const base64 = await this.converBase64(file);
+        console.log('HAHA => ', base64);
+        this.setState({
+            product: {
+                ...this.state,
+                image: base64
+            }
+        })
+    }
+    // 
+    converBase64 = (file: any) => {
 
+        return new Promise((resolve, reject) => {
 
+            const fileReader = new FileReader();
+            fileReader.readAsDataURL(file[0]);
+
+            fileReader.onload = () => {
+                resolve(fileReader.result);
+            }
+
+            fileReader.onerror = (error) => {
+                reject(error);
+            }
+        });
+    };
 }
 interface Props {
     turnOffPopUpAdd(): void
